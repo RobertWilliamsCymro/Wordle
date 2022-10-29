@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wordle</title>
+  </head>
+  <body class="bg-gray-800 text-white">
+    <div class="flex flex-col justify-between items-center min-h-screen">
+      <div class="text-center w-full border-b-[1px] border-b-gray-500">
+        <h1 class="text-3xl font-sans font-bold">Wordle</h1>
+      </div>
+      <div id="message-container" class="h-[30px]"></div>
+      <div id="tile-container" class="flex justify-center w-[330px] mb-7"></div>
+      <div id="key-container" class="flex justify-center flex-wrap sm:w-4/12"></div>
+    </div>    
+    <script type="module" src="main.ts"></script>
+  </body>
+</html>
+<!-- flex items-center justify-center w-[62px] h-[62px] box-border m-2 rounded border-none -->
