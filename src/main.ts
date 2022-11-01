@@ -159,7 +159,7 @@ const flipTile = () => {
   const rowTiles = document.querySelector(`#guessRow-${currentRow}`)
     ?.childNodes as NodeListOf<HTMLElement>;
   let checkWordle: string = wordle;
-  let guess: any[] = [];
+  const guess: {letter?: string, colour: string}[] = [];
 
   // code below used to collect all data
   rowTiles.forEach((tile) => {
@@ -167,7 +167,6 @@ const flipTile = () => {
   });
 
   guess.forEach((guess, index) => {
-
     if (guess.letter  === wordle[index]) {
       guess.colour = 'bg-green-700';
       checkWordle = checkWordle.replace(guess.letter, '');
@@ -175,16 +174,19 @@ const flipTile = () => {
   });
 
   guess.forEach((guess) => {
+    if (typeof guess.letter === 'string') {
     if (checkWordle.includes(guess.letter)) {
       guess.colour = 'bg-yellow-700';
       checkWordle = checkWordle.replace(guess.letter, '');
     }
+  }
   });
 
   rowTiles?.forEach((tile: HTMLElement, index: number) => {
     setTimeout(() => {
       tile.classList.value += ` ${guess[index].colour}`;
-      addColourToKey(guess[index].letter, guess[index].colour);
+      const letterSelected = guess[index].letter?.toUpperCase() as string;
+        addColourToKey(letterSelected, guess[index].colour);      
     }, 500 * index);
   });
 };
